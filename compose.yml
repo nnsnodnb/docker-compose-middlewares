@@ -13,7 +13,7 @@ services:
     restart: always
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
   postgres:
-    image: postgres:16.2
+    image: postgres:16.11
     container_name: postgres_localhost
     environment:
       POSTGRES_INITDB_ARGS: --encoding=UTF-8 --locale=C
