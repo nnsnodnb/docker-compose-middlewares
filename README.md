@@ -6,11 +6,12 @@
 $ docker compose up -d
 ```
 
-Start up `mysql`, `redis` & `s3`  services.
+Start up `mysql`, `postgres`, `redis` & `s3`  services.
 
 ### Binding ports
 
 - 3306:3306
+- 5432:5432
 - 6379:6379
 - 9000:9000
 - 9001:9001
