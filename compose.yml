@@ -9,14 +9,27 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       TZ: 'Asia/Tokyo'
     ports:
-    - 3306:3306
+    - '3306:3306'
     restart: always
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+  postgres:
+    image: postgres:16.2
+    container_name: postgres_localhost
+    environment:
+      POSTGRES_INITDB_ARGS: --encoding=UTF-8 --locale=C
+      POSTGRES_PASSWORD: admin
+      POSTGRES_NAME: admin
+      POSTGRES_USER: admin
+      PGDATA: /usr/lib/postgresql/data
+      TZ: 'Asia/Tokyo'
+    ports:
+    - '5432:5432'
+    restart: always
   redis:
     image: valkey/valkey:9.0.0
     container_name: valkey_localhost
     ports:
-    - 6379:6379
+    - '6379:6379'
     restart: always
   s3:
     image: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
@@ -29,8 +42,8 @@ services:
       source: minio_data
       target: /data
     ports:
-    - 9000:9000
-    - 9001:9001
+    - '9000:9000'
+    - '9001:9001'
     restart: always
     command: server /data --console-address ':9001'
 
